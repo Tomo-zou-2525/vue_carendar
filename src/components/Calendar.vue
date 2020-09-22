@@ -1,6 +1,23 @@
 <template>
   <div>
-    <h1>カレンダーサンプル</h1>
+    <!-- カレンダーヘッダ -->
+    <div id="cal-header">
+      <span class="header-arrow"></span>
+    </div>
+    <table id="cal-main">
+      <!-- 曜日を表示 -->
+      <thead>
+        <th v-for="(dayname, index) in weekdays" :key="index">{{dayname}}</th>
+      </thead>
+      <!-- 日付を表示 -->
+      <tbody>
+        <tr v-for="(weekData, index) in calData" :key="index">
+          <td class="cal-day" v-for="(dayNum, index) in weekData" :key="index">
+            <span>{{dayNum}}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -33,3 +50,38 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+/* カレンダーのCSS */
+#cal-main {
+  font-size: 14px;
+  line-height: 20px;
+  table-layout: fixed;
+  width: 100%;
+  margin-bottom: 1px solid #ddd;
+  border-collapse: collapse;
+}
+
+#cal-main th {
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: normal;
+  color: #999;
+}
+
+#cal-main td {
+  padding: 8px;
+  text-align: center;
+  vertical-align: middle;
+  border-top: 1px solid #ddd;
+}
+
+.cal-today {
+  background-color: #fcf8e3;
+}
+
+.cal-day.active {
+  background-color: #ffc9d7;
+}
+</style>
