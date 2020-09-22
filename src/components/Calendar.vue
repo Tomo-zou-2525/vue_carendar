@@ -2,7 +2,9 @@
   <div>
     <!-- カレンダーヘッダ -->
     <div id="cal-header">
-      <span class="header-arrow"></span>
+      <span class="header-arrow" v-on:touchstart="setLastMonth">《</span>
+      <span class="selected-month">{{year}}年{{month}}月</span>
+      <span class="header-arrow" v-on:touchstart="setNextMonth">》</span>
     </div>
     <table id="cal-main">
       <!-- 曜日を表示 -->
@@ -52,6 +54,23 @@ export default {
 </script>
 
 <style scoped>
+/* ヘッダのcss */
+#cal-header {
+  font-size: 24px;
+  padding: 0;
+  text-align: center;
+  margin-bottom: 10px;
+  background-color: darkorange;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+}
+#cal-header span {
+  padding: 15px 20px;
+  color: white;
+  display: inline-block;
+}
+
 /* カレンダーのCSS */
 #cal-main {
   font-size: 14px;
