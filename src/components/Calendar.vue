@@ -2,9 +2,9 @@
   <div>
     <!-- カレンダーヘッダ -->
     <div id="cal-header">
-      <span class="header-arrow" v-on:touchstart="setLastMonth">＜</span>
+      <span class="header-arrow" v-on:click="setLastMonth">＜</span>
       <span class="selected-month">{{year}}年{{month}}月</span>
-      <span class="header-arrow" v-on:touchstart="setNextMonth">＞</span>
+      <span class="header-arrow" v-on:click="setNextMonth">＞</span>
     </div>
 
     <!-- カレンダーメイン -->
@@ -20,7 +20,7 @@
             class="cal-day"
             v-for="(dayNum,index) in weekData"
             :key="index"
-            v-on:touchstart="dateClick(dayNum)"
+            v-on:click="dateClick(dayNum)"
             :class="{'cal-today': isToday(dayNum), active: day === dayNum}"
           >
             <span v-if="isToday(dayNum)">今日</span>
